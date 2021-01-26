@@ -1,20 +1,19 @@
 <?php
 $message="";
 if(count($_POST)>0) {
-	$conn = mysqli_connect("localhost","root","","phppot_examples");
-	$result = mysqli_query($conn,"SELECT * FROM users WHERE user_name='" . $_POST["userName"] . "' and password = '". $_POST["password"]."'");
+	$conn = mysqli_connect("localhost","root","","program");
+	$result = mysqli_query($conn,"SELECT * FROM users WHERE user_name='" . $_POST["testadmin"] . "' and password = '". $_POST["admin1234"]."'");
 	$count  = mysqli_num_rows($result);
 	if($count==0) {
-		$message = "Invalid Username or Password!";
+		$message = "Önnek nincs jogosultsága megtekinteni a fájlt";
 	} else {
-		$message = "You are successfully authenticated!";
+		$message = "Üdvözöljük rendszerünkben";
 	}
 }
 ?>
 <html>
 <head>
-<title>User Login</title>
-<link rel="stylesheet" type="text/css" href="styles.css" />
+<title>Bejelentkezés</title>
 </head>
 <body>
 <form name="frmUser" method="post" action="">
@@ -25,14 +24,14 @@ if(count($_POST)>0) {
 			</tr>
 			<tr class="tablerow">
 			<td>
-			<input type="text" name="userName" placeholder="User Name" class="login-input"></td>
+			<input type="text" name="usernev" placeholder="Felhasználó név" class="login-input"></td>
 			</tr>
 			<tr class="tablerow">
 			<td>
-			<input type="password" name="password" placeholder="Password" class="login-input"></td>
+			<input type="password" name="password" placeholder="Jelszó" class="login-input"></td>
 			</tr>
 			<tr class="tableheader">
-			<td align="center" colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
+			<td align="center" colspan="2"><input type="submit" name="submit" value="Bejelentkezés" class="btnSubmit"></td>
 			</tr>
 		</table>
 </form>
